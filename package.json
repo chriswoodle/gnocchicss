@@ -20,7 +20,8 @@
     "license": "MIT",
     "scripts": {
         "build": "tsc -b -v",
-        "generate": "yarn node dist/index.js"
+        "generate": "yarn node dist/index.js",
+        "ci": "yarn build && yarn generate"
     },
     "dependencies": {
         "@nestjs/common": "^10.4.15",
