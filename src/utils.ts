@@ -19,18 +19,30 @@ export function generateRule(name: string, rule: string) {
     return [
         `@mixin ${escapedName}`,
         `{ ${rule} }`,
-        `.${escapedName} { @include ${escapedName}; }`
+        // Disable generating classes, as bundle is large
+        // `.${escapedName} { @include ${escapedName}; }`
     ];
 }
 
 export function renderRules(rules: Rule[]) {
     const columns = rules.map((rule) => generateRule(rule.name, rule.rule));
-    const maxLengthFirstColumn = Math.max(...columns.map((column) => column[0].length));
-    const maxLengthSecondColumn = Math.max(...columns.map((column) => column[1].length));
+    // Calculate max length for each column position
+    const maxLengths = columns.reduce((acc, column) => {
+        column.forEach((cell, index) => {
+            acc[index] = Math.max(acc[index] || 0, cell.length);
+        });
+        return acc;
+    }, [] as number[]);
+
+    // Format each row with proper padding
     const content = columns.map((column) =>
-        column[0].padEnd(maxLengthFirstColumn, " ") + " "
-        + column[1].padEnd(maxLengthSecondColumn, " ") + " "
-        + column[2]);
+        column
+            .map((cell, index) => 
+                // Don't pad the last column
+                index === column.length - 1 ? cell : cell.padEnd(maxLengths[index], " ") + " "
+            )
+            .join("")
+    );
     return content.join("\n");
 }
 

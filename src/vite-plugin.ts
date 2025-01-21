@@ -18,13 +18,15 @@ export default function gnocchicssPlugin(userConfig: UserConfig) {
             const mappings = await app.get(AppService).generateVirtual();
 
             for (const [file, content] of Object.entries(mappings)) {
-                if (file.endsWith('.css')) {
-                    const referenceId = this.emitFile({
-                        type: 'asset',
-                        fileName: file,
-                        source: content,
-                    });
-                }
+                // if (file.endsWith('.css')) {
+                //     if (process.env.NODE_ENV === 'production') {
+                //         const referenceId = this.emitFile({
+                //             type: 'asset',
+                //             fileName: file,
+                //             source: content,
+                //         });
+                //     }
+                // }
                 virtualFileMapping[file] = content;
             }
 

@@ -41,13 +41,14 @@ In your scss files, import the library and extend classes as needed:
 @use "gnocchicss" as *;
 
 .my-class {
-  @extend .text-black;
-  @extend .bg-magenta;
+  @include text-black;
+  @include bg-magenta;
 }
 ```
 
-Or use them in your html directly:
-
+# Planned features
+Use classes directly in html directly:
+> TODO: feature planned
 ```html
 <div class="text-black bg-magenta">Hello World</div>
 ```
@@ -65,8 +66,8 @@ Consider using the breakpoint or state mixins to achieve the same effect:
 
 ```scss
 .myclass {
-    @extend sm {
-        @extend .text-black;
+    @include sm {
+        @include text-black;
     }
 }
 ```
@@ -75,16 +76,16 @@ For `hover`:
 
 ```scss
 .myclass {
-    @extend .text-black;
+    @include text-black;
 
-    @extend hover {
-        @extend .text-slate;
+    @include hover {
+        @include text-slate;
     }
 
     // Or just regular scss
     /*
         &:hover {
-            @extend .text-slate;
+            @include text-slate;
         }
     */
 }
