@@ -17,6 +17,7 @@
         "gnocchicss",
         "vite-plugin"
     ],
+    "license": "MIT",
     "scripts": {
         "build": "tsc -b -v",
         "generate": "yarn node dist/index.js"
