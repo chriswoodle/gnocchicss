@@ -18,6 +18,11 @@ jobs:
       - run: corepack enable
       - run: yarn install --immutable
       - run: yarn ci
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error 
 
   publish-npm:
     needs: build
@@ -28,6 +33,10 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
