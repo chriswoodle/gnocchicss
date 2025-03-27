@@ -65,7 +65,7 @@ export class AppService {
 
 
         const preflightFile = "preflight.scss";
-        const preflightContent = await fs.readFile(path.resolve(__dirname, preflightFile), "utf-8");
+        const preflightContent = await fs.readFile(path.resolve(__dirname, '..', 'lib', preflightFile), "utf-8");
         virtualFileMapping[preflightFile] = preflightContent;
 
         const indexFile = "index.scss";
