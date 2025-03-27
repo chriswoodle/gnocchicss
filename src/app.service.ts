@@ -35,16 +35,8 @@ export class AppService {
         this.logger.log("Gnocchicss generation completed");
     }
 
-    async generateVirtual() {
-        // Find all providers that have a generate method
-        const providers = this.discoveryService.getProviders()
-            .map(provider => provider.instance)
-            .filter(instance => instance && instance.generate);
-
-        const virtualFileMapping: Record<string, string> = {};
-
-
-        const partials = await Promise.all<{ ruleFileName: string, result: GeneratedPartial }>(providers.map(async provider => {
+    private async loadPartials(providers: any[]) {
+        return Promise.all<{ ruleFileName: string, result: GeneratedPartial }>(providers.map(async provider => {
             let result: GeneratedPartial;
             try {
                 result = provider.generate();
@@ -64,19 +56,29 @@ export class AppService {
                 ruleFileName,
             }
         }));
+    }
+
+    async generateVirtual() {
+        // Find all providers that have a generate method
+        const providers = this.discoveryService.getProviders()
+            .map(provider => provider.instance)
+            .filter(instance => instance && instance.generate);
+
+        const virtualFileMapping: Record<string, string> = {};
 
         const preflightContent = await fs.readFile(path.resolve(__dirname, '..', 'lib', "preflight.scss"), "utf-8");
-
-        const indexFile = "index.scss";
-        const indexContent = [
+        const partials = [
             {
-                ruleFileName: "preflight",
                 result: {
                     output: preflightContent,
-                }
+                },
+                ruleFileName: "preflight",
             },
-            ...partials
-        ].map(partial => `@forward "${partial.ruleFileName}";`).join("\n");
+            ...(await this.loadPartials(providers))
+        ];
+
+        const indexFile = "index.scss";
+        const indexContent = partials.map(partial => `@forward "${partial.ruleFileName}";`).join("\n");
 
         virtualFileMapping[indexFile] = indexContent;
 
