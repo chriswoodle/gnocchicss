@@ -63,8 +63,16 @@ export class AppService {
             }
         }));
 
+
+        const preflightFile = "preflight.scss";
+        const preflightContent = await fs.readFile(path.resolve(__dirname, preflightFile), "utf-8");
+        virtualFileMapping[preflightFile] = preflightContent;
+
         const indexFile = "index.scss";
-        const indexContent = partials.map(partial => `@forward "${partial.ruleFileName}";`).join("\n");
+        const indexContent =
+            `@forward "${preflightFile}"; \n` +
+            partials.map(partial => `@forward "${partial.ruleFileName}";`).join("\n");
+
         virtualFileMapping[indexFile] = indexContent;
 
         partials.map(partial => virtualFileMapping[`_${partial.ruleFileName}.scss`] = partial.result.output);

@@ -9,7 +9,7 @@ Inspired by TailwindCSS.
 ## Installation
 
 ```bash
-yarn add gnocchicss
+yarn add gnocchicss sass-embedded
 ```
 
 ## Usage with Vite
