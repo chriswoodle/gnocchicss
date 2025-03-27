@@ -42,6 +42,8 @@ export class AppService {
             .filter(instance => instance && instance.generate);
 
         const virtualFileMapping: Record<string, string> = {};
+
+
         const partials = await Promise.all<{ ruleFileName: string, result: GeneratedPartial }>(providers.map(async provider => {
             let result: GeneratedPartial;
             try {
@@ -63,15 +65,18 @@ export class AppService {
             }
         }));
 
-
-        const preflightFile = "preflight.scss";
-        const preflightContent = await fs.readFile(path.resolve(__dirname, '..', 'lib', preflightFile), "utf-8");
-        virtualFileMapping[preflightFile] = preflightContent;
+        const preflightContent = await fs.readFile(path.resolve(__dirname, '..', 'lib', "preflight.scss"), "utf-8");
 
         const indexFile = "index.scss";
-        const indexContent =
-            `@forward "${preflightFile}"; \n` +
-            partials.map(partial => `@forward "${partial.ruleFileName}";`).join("\n");
+        const indexContent = [
+            {
+                ruleFileName: "preflight",
+                result: {
+                    output: preflightContent,
+                }
+            },
+            ...partials
+        ].map(partial => `@forward "${partial.ruleFileName}";`).join("\n");
 
         virtualFileMapping[indexFile] = indexContent;
 
