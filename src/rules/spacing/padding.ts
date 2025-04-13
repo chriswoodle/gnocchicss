@@ -64,6 +64,7 @@ export class Padding implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

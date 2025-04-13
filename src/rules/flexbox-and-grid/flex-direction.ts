@@ -25,6 +25,7 @@ export class FlexDirection implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

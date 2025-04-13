@@ -19,6 +19,7 @@ export class DivideWidth implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

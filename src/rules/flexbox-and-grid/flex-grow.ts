@@ -17,6 +17,7 @@ export class FlexGrow implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

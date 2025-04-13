@@ -18,6 +18,7 @@ export class Overscroll implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

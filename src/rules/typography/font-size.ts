@@ -61,6 +61,7 @@ export class FontSize implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

@@ -21,6 +21,7 @@ export class FlexWrap implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

@@ -193,6 +193,7 @@ export class Grid implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

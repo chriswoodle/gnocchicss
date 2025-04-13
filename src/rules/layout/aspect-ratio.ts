@@ -21,6 +21,7 @@ export class AspectRatio implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

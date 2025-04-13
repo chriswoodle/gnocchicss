@@ -22,6 +22,7 @@ export class BackgroundColor implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

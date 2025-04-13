@@ -21,6 +21,7 @@ export class Breakpoint implements RuleGenerator {
         }
 
         return {
+            rules: [],
             output: result.join("\n")
         }
     }

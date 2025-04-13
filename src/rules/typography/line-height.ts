@@ -65,6 +65,7 @@ export class LineHeight implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

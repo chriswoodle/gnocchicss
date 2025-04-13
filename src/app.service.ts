@@ -28,7 +28,7 @@ export class AppService {
         await fs.mkdir(outDir, { recursive: true });
         await fs.mkdir(cssDir, { recursive: true });
 
-        const virtualFileMapping = await this.generateVirtual();
+        const { virtualFileMapping } = await this.generateVirtual();
         await Promise.all(Object.entries(virtualFileMapping).map(([file, content]) =>
             fs.writeFile(path.resolve(outDir, file), content)
         ));
@@ -67,15 +67,20 @@ export class AppService {
         const virtualFileMapping: Record<string, string> = {};
 
         const preflightContent = await fs.readFile(path.resolve(__dirname, '..', 'lib', "preflight.scss"), "utf-8");
-        const partials = [
-            {
-                result: {
-                    output: preflightContent,
+        const partials: {
+            result: GeneratedPartial,
+            ruleFileName: string,
+        }[] = [
+                {
+                    result: {
+                        rules: [],
+                        output: preflightContent,
+                    },
+                    ruleFileName: "preflight",
                 },
-                ruleFileName: "preflight",
-            },
-            ...(await this.loadPartials(providers))
-        ];
+
+                ...(await this.loadPartials(providers))
+            ];
 
         const indexFile = "index.scss";
         const indexContent = partials.map(partial => `@forward "${partial.ruleFileName}";`).join("\n");
@@ -108,6 +113,9 @@ export class AppService {
 
         await compiler.dispose();
 
-        return virtualFileMapping;
+        return {
+            virtualFileMapping,
+            partials,
+        };
     }
 }

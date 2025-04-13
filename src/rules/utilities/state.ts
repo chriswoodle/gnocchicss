@@ -17,6 +17,7 @@ export class State implements RuleGenerator {
         }
 
         return {
+            rules: [],
             output: result.join("\n")
         }
     }

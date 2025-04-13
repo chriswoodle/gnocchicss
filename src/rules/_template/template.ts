@@ -15,6 +15,7 @@ export class Template implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

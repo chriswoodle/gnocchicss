@@ -59,6 +59,7 @@ export class Height implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

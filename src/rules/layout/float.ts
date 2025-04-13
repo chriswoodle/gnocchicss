@@ -14,6 +14,7 @@ export class Float implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

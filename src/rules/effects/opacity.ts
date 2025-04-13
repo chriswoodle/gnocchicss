@@ -18,6 +18,7 @@ export class Opacity implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

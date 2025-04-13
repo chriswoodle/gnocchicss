@@ -1,8 +1,7 @@
-import { NestFactory } from "@nestjs/core";
 import { UserConfig } from "./types.js";
-import { AppModule } from "./app.module.js";
 import { AppService } from "./app.service.js";
 import type { Importer } from "sass";
+import { init } from "./main.js";
 
 const gnocchicssVirtualModuleId = 'gnocchicss'
 
@@ -14,10 +13,10 @@ export default function gnocchicssPlugin(userConfig: UserConfig) {
         enforce: "pre" as const,
         async buildStart(options) {
             this.info("buildStart");
-            const app = await NestFactory.createApplicationContext(await AppModule.forRootAsync(userConfig));
-            const mappings = await app.get(AppService).generateVirtual();
+            const app = await init(userConfig);
+            const generated = await app.get(AppService).generateVirtual();
 
-            for (const [file, content] of Object.entries(mappings)) {
+            for (const [file, content] of Object.entries(generated.virtualFileMapping)) {
                 // if (file.endsWith('.css')) {
                 //     if (process.env.NODE_ENV === 'production') {
                 //         const referenceId = this.emitFile({

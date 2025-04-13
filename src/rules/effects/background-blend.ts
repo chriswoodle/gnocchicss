@@ -25,6 +25,7 @@ export class BackgroundBlend implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

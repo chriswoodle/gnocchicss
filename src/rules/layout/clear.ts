@@ -15,6 +15,7 @@ export class Clear implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

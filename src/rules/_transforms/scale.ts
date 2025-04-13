@@ -36,6 +36,7 @@ export function generate(): GeneratedPartial {
     ]);
 
     return {
+        rules,
         output: renderRules(rules)
     }
 }

@@ -69,6 +69,7 @@ export class Overflow implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

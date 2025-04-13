@@ -15,6 +15,7 @@ export class BorderStyle implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

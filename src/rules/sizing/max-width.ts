@@ -38,6 +38,7 @@ export class MaxWidth implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

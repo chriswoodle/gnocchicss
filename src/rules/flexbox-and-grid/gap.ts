@@ -28,6 +28,7 @@ export class Gap implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

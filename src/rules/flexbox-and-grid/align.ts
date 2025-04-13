@@ -31,6 +31,7 @@ export class Align implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

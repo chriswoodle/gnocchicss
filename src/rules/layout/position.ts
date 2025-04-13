@@ -29,6 +29,7 @@ export class Position implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

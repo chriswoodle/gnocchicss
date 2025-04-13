@@ -23,6 +23,7 @@ export class _Object implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

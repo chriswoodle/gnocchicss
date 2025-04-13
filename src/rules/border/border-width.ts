@@ -54,6 +54,7 @@ export class BorderWidth implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

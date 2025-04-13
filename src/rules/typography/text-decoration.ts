@@ -25,6 +25,7 @@ export class TextDecoration implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

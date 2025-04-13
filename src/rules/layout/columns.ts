@@ -73,6 +73,7 @@ export class Columns implements RuleGenerator {
         }
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

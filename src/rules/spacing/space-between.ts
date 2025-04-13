@@ -26,6 +26,7 @@ export class SpaceBetween implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

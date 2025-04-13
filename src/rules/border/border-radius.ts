@@ -115,6 +115,7 @@ export class BorderRadius implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

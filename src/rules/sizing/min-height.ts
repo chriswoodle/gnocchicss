@@ -54,6 +54,7 @@ export class MinHeight implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

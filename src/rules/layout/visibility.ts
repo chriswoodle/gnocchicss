@@ -21,6 +21,7 @@ export class Visibility implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

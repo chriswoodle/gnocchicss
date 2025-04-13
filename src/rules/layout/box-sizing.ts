@@ -11,6 +11,7 @@ export class BoxSizing implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

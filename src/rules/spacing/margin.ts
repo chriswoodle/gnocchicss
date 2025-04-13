@@ -77,6 +77,7 @@ export class Margin implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

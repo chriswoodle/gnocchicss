@@ -11,6 +11,7 @@ export class Isolation implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

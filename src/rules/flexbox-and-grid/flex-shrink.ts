@@ -17,6 +17,7 @@ export class FlexShrink implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

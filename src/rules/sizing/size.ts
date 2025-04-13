@@ -43,6 +43,7 @@ export class Size implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

@@ -54,6 +54,7 @@ export class MaxHeight implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

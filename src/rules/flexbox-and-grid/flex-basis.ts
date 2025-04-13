@@ -30,6 +30,7 @@ export class FlexBasis implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

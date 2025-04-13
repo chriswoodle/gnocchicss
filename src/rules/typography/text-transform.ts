@@ -25,6 +25,7 @@ export class TextTransform implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

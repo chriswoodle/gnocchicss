@@ -20,6 +20,7 @@ export class MinWidth implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

@@ -14,6 +14,7 @@ export class DivideStyle implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

@@ -25,6 +25,7 @@ export class DivideColor implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

@@ -146,6 +146,7 @@ export class TopRightBottomLeft implements RuleGenerator {
         ];
 
         return {
+            rules,
             output: renderRules(rules)
         }
     }

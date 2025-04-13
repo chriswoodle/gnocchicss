@@ -11,6 +11,7 @@ export interface Rule {
 }
 
 export interface GeneratedPartial {
+    rules: Rule[];
     output: string;
 }
 

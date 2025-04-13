@@ -24,6 +24,7 @@ export class Container implements RuleGenerator {
         result.push(`}`);
 
         return {
+            rules: [],
             output: result.join("\n")
         }
     }
