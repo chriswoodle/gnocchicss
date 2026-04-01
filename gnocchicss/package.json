@@ -1,0 +1,44 @@
+{
+  "name": "gnocchicss",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chriswoodle/gnocchicss.git"
+  },
+  "scripts": {
+    "build": "tsc -b -v",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo"
+  },
+  "devDependencies": {
+    "@gnocchicss/core": "workspace:^",
+    "@types/node": "^24.12.0",
+    "sass": "^1.98.0",
+    "sass-embedded": "^1.98.0",
+    "typescript": "^6.0.2"
+  },
+  "peerDependencies": {
+    "@gnocchicss/core": "workspace:^",
+    "sass": "^1.98.0",
+    "sass-embedded": "^1.98.0"
+  },
+  "peerDependenciesMeta": {
+    "sass": {
+      "optional": true
+    },
+    "sass-embedded": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "gnocchi",
+    "gnocchicss",
+    "vite-plugin"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,41 @@
+{
+  "name": "@gnocchicss/core",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE.txt",
+    "README.md"
+  ],
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chriswoodle/gnocchicss.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "gnocchi",
+    "gnocchicss",
+    "vite-plugin"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -b -v",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "generate": "yarn node dist/index.js",
+    "test": "vitest run",
+    "test:update": "vitest run --update",
+    "ci": "yarn build && yarn generate"
+  },
+  "dependencies": {
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  }
+}

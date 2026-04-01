@@ -1,0 +1,21 @@
+{
+  "name": "gnocchicss-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "yarn workspaces foreach --topological-dev --all --exclude web run build",
+    "clean": "yarn workspaces foreach --topological-dev --all --exclude web run clean",
+    "test": "yarn workspace @gnocchicss/core test",
+    "ci": "yarn build"
+  },
+  "packageManager": "yarn@4.13.0",
+  "devDependencies": {
+    "typescript": "^6.0.2"
+  },
+  "workspaces": [
+    "core",
+    "gnocchicss",
+    "cli",
+    "web"
+  ],
+  "version": "0.0.0"
+}
